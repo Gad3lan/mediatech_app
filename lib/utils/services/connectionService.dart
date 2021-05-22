@@ -13,7 +13,7 @@ class ConnectionService {
     return false;
   }
 
-  EmailInfo checkEmail(String email) {
+  EmailInfo? checkEmail(String email) {
     return null;
   }
 }

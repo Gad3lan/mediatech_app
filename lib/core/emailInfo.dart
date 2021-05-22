@@ -3,7 +3,7 @@ class EmailInfo {
   final bool isFirstConnection;
 
   EmailInfo({
-    this.isKnown,
-    this.isFirstConnection,
+    required this.isKnown,
+    required this.isFirstConnection,
   });
 }

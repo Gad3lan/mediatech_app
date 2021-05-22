@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mediatech_app/config/routes/routeInformationParser.dart';
-import 'package:mediatech_app/config/routes/routerDelegate.dart';
+import 'package:mediatech_app/constants/types.dart';
+import 'package:mediatech_app/core/role.dart';
+import 'package:mediatech_app/core/user.dart';
+import 'package:mediatech_app/modules/screens/homeScreen.dart';
+import 'package:mediatech_app/utils/services/clientService.dart';
+import 'package:mediatech_app/widgets/menus/bottomBarMenu.dart';
 import 'package:mediatech_app/widgets/menus/menu.dart';
 
 void main() {
   runApp(MediaTechApp());
 }
-
-class Book {
-  final String title;
-  final String author;
-
-  Book(this.title, this.author);
-}
-
 
 class MediaTechApp extends StatefulWidget {
   @override
@@ -21,26 +17,23 @@ class MediaTechApp extends StatefulWidget {
 }
 
 class _MediaTechAppState extends State<MediaTechApp> {
-  RessourceRouterDelegate _routerDelegate = RessourceRouterDelegate();
-  RessourceRouteInformationParser _routeInformationParser = RessourceRouteInformationParser();
+  User user = new User(
+      name: "Alan Adamiak",
+      email: "alan.adamiak@gmail.com",
+      membershipID: "53TGJT",
+      role: Role.Manager,
+      strikeNumber: 0
+  );
+
+  ClientService clientService = new ClientService(token: "ZITNHEZTHN");
+  //ClientService.setUser(user);
 
   @override
   Widget build(BuildContext context) {
+    ClientService.setUser(user);
     return MaterialApp(
-      home: Scaffold(
-        drawer: Menu(),
-        appBar: AppBar(
-          title: Text("Home"),
-        ),
-      ),
+      home: HomeScreen(currentType: Type.Livres,),
+      debugShowCheckedModeBanner: false,
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp.router(
-  //     title: 'Books App',
-  //     routerDelegate: _routerDelegate,
-  //     routeInformationParser: _routeInformationParser,
-  //   );
-  // }
 }
