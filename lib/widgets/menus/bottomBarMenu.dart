@@ -19,7 +19,7 @@ class _BottomMenuBarState extends State<BottomMenuBar> {
   void _onItemTapped(int index) {
     Navigator.of(context).pop();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => HomeScreen()),
+        builder: (context) => HomeScreen(currentType: "Livre",)),
     );
   }
 

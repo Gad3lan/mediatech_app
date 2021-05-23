@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:mediatech_app/constants/types.dart';
+import 'package:mediatech_app/core/ressource.dart';
 import 'package:mediatech_app/core/role.dart';
 import 'package:mediatech_app/core/user.dart';
 import 'package:mediatech_app/modules/screens/homeScreen.dart';
@@ -25,6 +27,21 @@ class _LoginScreenState extends State<LoginScreen> {
           name
           nb_strikes
           role
+          rentals {
+            ressource {
+              title
+              author
+              editor
+              edition_date
+              cover
+              resume
+              type {type}
+              genre {genre}
+              cote
+              quantity
+              
+            }
+          }
         }
       }
     """;
@@ -49,6 +66,26 @@ class _LoginScreenState extends State<LoginScreen> {
           break;
       }
       return role;
+    }
+
+    List<Ressource> toList(ressources) {
+      List<Ressource> parsedRessources = [];
+      for (var elt in ressources) {
+        parsedRessources.add(new Ressource(
+            title: elt['ressource']['title'],
+            author: elt['ressource']['author'],
+            editor: elt['ressource']['editor'],
+            publicationDate: DateTime.parse(elt['ressource']['edition_date']),
+            cover: elt['ressource']['cover'],
+            summary: elt['ressource']['resume'],
+            type: elt['ressource']['type']['type'],
+            genre: elt['ressource']['genre']['genre'],
+            id: elt['ressource']['cote'],
+            copies: elt['ressource']['quantity'],
+            availability: elt['ressource']['quantity'] > 0)
+        );
+      }
+      return parsedRessources;
     }
 
     return Scaffold(
@@ -90,8 +127,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         strikeNumber: result['login']['nb_strikes'],
                       );
                       ClientService.setUser(user);
+                      print(result['login']['rentals']);
+                      ClientService.setRessources(toList(result['login']['rentals']));
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomeScreen()),
+                          builder: (context) => HomeScreen(currentType: "Livre")),
                       );
                     } else {
                       setState(() {
