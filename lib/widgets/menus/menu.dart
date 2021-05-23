@@ -46,12 +46,12 @@ class _MenuState extends State<Menu> {
 
   Widget appropriateMenu(BuildContext context) {
     switch (user.role) {
-      case Role.Connected:
+      case Role.connected:
         return ConnectedMenu();
         break;
-      case Role.Manager:
+      case Role.manager:
         return ManagerMenu();
-      case Role.Admin:
+      case Role.admin:
         return AdminMenu();
       default:
         return ListView(

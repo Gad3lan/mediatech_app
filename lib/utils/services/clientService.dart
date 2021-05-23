@@ -8,7 +8,7 @@ class ClientService {
     name: "Utilisateur anonyme",
     email: "",
     membershipID: "",
-    role: Role.NotConnected,
+    role: Role.not_connected,
     strikeNumber: 0,
   );
 

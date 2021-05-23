@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cupertino_icons/cupertino_icons.dart';
@@ -13,10 +15,11 @@ class BottomMenuBar extends StatefulWidget {
 
 class _BottomMenuBarState extends State<BottomMenuBar> {
   int _selectedIndex = 0;
+
   void _onItemTapped(int index) {
     Navigator.of(context).pop();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => HomeScreen(currentType: Type.values[index])),
+        builder: (context) => HomeScreen()),
     );
   }
 

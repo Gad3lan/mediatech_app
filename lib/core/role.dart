@@ -1,6 +1,6 @@
 enum Role {
-  NotConnected,
-  Connected,
-  Manager,
-  Admin
+  not_connected,
+  connected,
+  manager,
+  admin
 }
