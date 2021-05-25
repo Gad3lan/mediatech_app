@@ -95,7 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Text("Connexion"),
+            Text("Connexion", style: Theme.of(context).textTheme.headline4,),
+            const SizedBox(height: 15.0),
             TextField(
               controller: emailController,
               decoration: InputDecoration(
@@ -103,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: "Email",
               ),
             ),
+            const SizedBox(height: 5.0,),
             TextField(
               obscureText: true,
               controller: passwordController,
@@ -111,6 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 labelText: "Password",
               ),
             ),
+            const SizedBox(height: 10.0,),
             Mutation(
               options: MutationOptions(
                   document: gql(_loginMutation),
@@ -129,6 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ClientService.setUser(user);
                       print(result['login']['rentals']);
                       ClientService.setRessources(toList(result['login']['rentals']));
+                      Navigator.of(context).pop();
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => HomeScreen(currentType: "Livre")),
                       );
@@ -154,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         'password': passwordController.text,
                       });
                     },
-                    child: Text("Connexion")
+                    style: TextButton.styleFrom(backgroundColor: Colors.blue, primary: Colors.white),
+                    child: Text("Se Connecter")
                 );
               },
             ),

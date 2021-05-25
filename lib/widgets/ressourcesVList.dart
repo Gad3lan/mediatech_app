@@ -19,7 +19,7 @@ class RessourceVList extends StatelessWidget {
           trailing: IconButton(
             icon: Icon(Icons.arrow_forward_ios),
             onPressed: () => Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => RessourceInfoScreen(ressource: ressources![id]),
+              builder: (context) => RessourceInfoScreen(ressource: ressources[id]),
             )),
           ),
         );

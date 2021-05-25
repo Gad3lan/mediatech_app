@@ -62,11 +62,11 @@ class ConnectedMenu extends StatelessWidget {
           onClicked: () => selectedItem(context, 0),
         ),
         //const SizedBox(height: 5,),
-        buildMenuItem(
-          text: "Liste de lecture",
-          icon: Icons.menu_book,
-          onClicked: () => selectedItem(context, 1),
-        ),
+        // buildMenuItem(
+        //   text: "Liste de lecture",
+        //   icon: Icons.menu_book,
+        //   onClicked: () => selectedItem(context, 1),
+        // ),
         //const SizedBox(height: 5,),
         buildMenuItem(
           text: "Mes locations",

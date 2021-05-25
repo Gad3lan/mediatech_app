@@ -15,7 +15,7 @@ class RentedRessourcesScreen extends StatelessWidget {
       appBar: AppBar(title: Text("Mes locations")),
       drawer: Menu(),
       bottomNavigationBar: BottomMenuBar(),
-      body: rentedRessources != null ? RessourceVList(ressources: rentedRessources!) : Center(
+      body: rentedRessources!.isNotEmpty ? RessourceVList(ressources: rentedRessources!) : Center(
         child: Text("Vous n'avez emprunté aucun média", style: TextStyle(fontSize: 16),),
       ),
     );

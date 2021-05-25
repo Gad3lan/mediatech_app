@@ -15,11 +15,12 @@ class BottomMenuBar extends StatefulWidget {
 
 class _BottomMenuBarState extends State<BottomMenuBar> {
   int _selectedIndex = 0;
+  List<String> types = ["Livre", "Journaux", "Film"];
 
   void _onItemTapped(int index) {
     Navigator.of(context).pop();
     Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => HomeScreen(currentType: "Livre",)),
+        builder: (context) => HomeScreen(currentType: types[index],)),
     );
   }
 

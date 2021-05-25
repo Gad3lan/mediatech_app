@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:mediatech_app/constants/types.dart';
-import 'package:mediatech_app/core/role.dart';
-import 'package:mediatech_app/core/user.dart';
-import 'package:mediatech_app/modules/screens/homeScreen.dart';
 import 'package:mediatech_app/modules/screens/loginScreen.dart';
 import 'package:mediatech_app/utils/services/clientService.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final HttpLink link = HttpLink("http://localhost:8080/graphql");
 
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
-      cache: GraphQLCache(),
+      cache: GraphQLCache(store: InMemoryStore()),
       link: link,
     ),
   );
@@ -32,7 +28,6 @@ class MediaTechApp extends StatefulWidget {
 
 class _MediaTechAppState extends State<MediaTechApp> {
   ClientService clientService = new ClientService(token: "ZITNHEZTHN");
-  //ClientService.setUser(user);
 
   @override
   Widget build(BuildContext context) {

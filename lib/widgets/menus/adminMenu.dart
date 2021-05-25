@@ -31,7 +31,7 @@ class AdminMenu extends StatelessWidget {
   }
 
   void selectedItem(BuildContext context, int id) {
-    Navigator.of(context).pop();
+    //Navigator.of(context).pop();
 
     switch (id) {
       case 0:
@@ -103,11 +103,11 @@ class AdminMenu extends StatelessWidget {
           icon: Icons.account_circle,
           onClicked: () => selectedItem(context, 0),
         ),
-        buildMenuItem(
-          text: "Liste de lecture",
-          icon: Icons.menu_book,
-          onClicked: () => selectedItem(context, 1),
-        ),
+        // buildMenuItem(
+        //   text: "Liste de lecture",
+        //   icon: Icons.menu_book,
+        //   onClicked: () => selectedItem(context, 1),
+        // ),
         buildMenuItem(
           text: "Mes locations",
           icon: Icons.book,
