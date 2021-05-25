@@ -39,7 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
               genre {genre}
               cote
               quantity
-              
             }
           }
         }
@@ -128,6 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         membershipID: result['login']['membership_id'],
                         role: getRole(result['login']['role']),
                         strikeNumber: result['login']['nb_strikes'],
+                        password: passwordController.text,
                       );
                       ClientService.setUser(user);
                       print(result['login']['rentals']);

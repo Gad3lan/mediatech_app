@@ -10,6 +10,7 @@ class ClientService {
     membershipID: "",
     role: Role.not_connected,
     strikeNumber: 0,
+    password: "",
   );
 
   static List<Ressource> _rentedRessources = [];

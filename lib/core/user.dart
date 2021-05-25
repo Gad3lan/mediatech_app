@@ -7,6 +7,7 @@ class User {
   final String membershipID;
   final Role role;
   final int strikeNumber;
+  final String password;
 
   User({
     required this.name,
@@ -14,5 +15,6 @@ class User {
     required this.membershipID,
     required this.role,
     required this.strikeNumber,
+    required this.password
   });
 }
